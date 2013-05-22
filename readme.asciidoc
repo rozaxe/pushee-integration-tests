@@ -35,15 +35,15 @@ workdir/pushee
 workdir/pushee-integration-tests
 ----    
 +
-Or, you can specify path to Unified Push server pom.xml file via -Dunified.push.server.location=/path/to/pom.xml
+Or, you can specify path to Unified Push server pom.xml file via `-Dunified.push.server.location=/path/to/pom.xml`
 
-. By default, it uses JBoss AS 7.1.1. Run mvn clean verify
+. By default, it uses JBoss AS 7.1.1. Run `mvn clean verify`
 
 === How to run against JBoss EAP 6
 
 . Get JBoss EAP 6.0.1 zip and extract it somewhere
 . Set Maven Enterprise repository in your settings.xml (https://maven.repository.redhat.com/techpreview/all/)
-. Run mvn clean verify -Peap601-managed -DjbossHome=/path/to/eap/directory
+. Run `mvn clean verify -Peap601-managed -DjbossHome=/path/to/eap/directory`
 
 === How to develop new tests
 
@@ -55,3 +55,4 @@ To speed up tests development, following tricks are advised:
 === TODO
 
 * It might be interesting to use suite extension of Arquillian, that would deploy Unified Push Server only once per all tests.
+  See https://gist.github.com/blabno/5387599
