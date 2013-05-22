@@ -1,0 +1,57 @@
+= Aerogear Unified Push server integration tests 
+
+== Idea
+
+Push EE is an application running on top of an application server. Arquillian
+can deploy an app, so the remaining workload is to figure out how to replace
+curl in an convenient way from Java.
+
+Integration tests will be kept separated until we release a stable version of
+Groovy and Spock runner. Then, they will be moved into standard layout and
+executed via failsafe plugin in integration-tests phase.
+
+=== Description of the testing approach
+
+I tried following approaches:
+
+* Manual using Apache HttpClient
+* DSL API
+* JSONObject to work with JSON
+* GSON serialization
+* REST-Assured framework
+
+All are listed here: https://gist.github.com/kpiwko/5612949
+
+In the end it seems that Groovy is the most readable while not impacting test infrastructure that heavily.
+
+== Requirements
+
+. Get Arquillian Spock Testrunner and install it into your local Maven repository from https://github.com/kpiwko/arquillian-testrunner-spock/tree/spock-0.7-update
+. Fetch Unified push server code and put it into same directory and integration tests
+
++
+----
+workdir/pushee
+workdir/pushee-integration-tests
+----    
++
+Or, you can specify path to Unified Push server pom.xml file via -Dunified.push.server.location=/path/to/pom.xml
+
+. By default, it uses JBoss AS 7.1.1. Run mvn clean verify
+
+=== How to run against JBoss EAP 6
+
+. Get JBoss EAP 6.0.1 zip and extract it somewhere
+. Set Maven Enterprise repository in your settings.xml (https://maven.repository.redhat.com/techpreview/all/)
+. Run mvn clean verify -Peap601-managed -DjbossHome=/path/to/eap/directory
+
+=== How to develop new tests
+
+To speed up tests development, following tricks are advised:
+
+. Run container in remote mode
+. Deploy application on your own and replace @ArquillianResource URL with a static URL and comment out @Deployment method
+
+=== TODO
+
+* It might be interesting to use suite extension of Arquillian, that would deploy Unified Push Server only once per all tests.
