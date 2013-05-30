@@ -1,3 +1,5 @@
+package org.aerogear.pushee.tests;
+
 import groovy.json.JsonBuilder
 
 import org.jboss.arquillian.container.test.api.Deployment
