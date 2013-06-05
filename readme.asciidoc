@@ -26,10 +26,8 @@ In the end it seems that Groovy is the most readable while not impacting test in
 
 == Requirements
 
-. Get Arquillian Spock Testrunner and install it into your local Maven repository from https://github.com/kpiwko/arquillian-testrunner-spock/tree/spock-0.7-update
-. Get ShrinkWrap Maven Resolver with fixed SHRINKRES-134 and install it into your local Maven repository from https://github.com/shrinkwrap/resolver
+. Get Arquillian Spock Testrunner and install it into your local Maven repository from https://github.com/kpiwko/arquillian-testrunner-spock/tree/ARQ-1143 
 . Fetch Unified push server code and put it into same directory and integration tests, e.g.
-
 +
 ----
 workdir/pushee
